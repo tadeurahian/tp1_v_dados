@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="vendors/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="vendors/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" type="text/css" href="vendors/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+    </head>
+    <body>
+
+        <div class="main-container">
+
+            <h4> TP 1 Visualização de Dados </h4>
+
+            <div id="filter-form" class="form-inline">
+                <div class="form-group">
+                    <label for="filter">Filter</label>
+                    <input type="text" class="form-control" id="filter" placeholder="Type your filter">
+                </div>
+                <button class="btn btn-default btn-filter">Filter</button>
+                <button class="btn btn-default btn-clean-filter">Clean</button>
+            </div>
+
+            <table id="main-table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th data-column="permalink">Permalink</th>
+                        <th data-column="company">Company</th>
+                        <th data-column="numEmps">NumEmps</th>
+                        <th data-column="category">Category</th>
+                        <th data-column="city">City</th>
+                        <th data-column="state">State</th>
+                        <th data-column="fundedDate">FundedDate</th>
+                        <th data-column="raisedAmt">RaisedAmt</th>
+                        <th data-column="raisedCurrency">RaisedCurrency</th>
+                        <th data-column="round">Round</th>
+                    </tr>
+                </thead>
+                <tbody id="main-table-body">
+                </tbody>
+            </table>
+
+            <div class="controls">
+                <button type="button" class="btn btn-default previous">Previous</button>                                
+                <button type="button" class="btn btn-success next">Next</button>                
+            </div>
+
+        </div>
+
+        
+        <script type="text/javascript" src="vendors/js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="vendors/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="vendors/js/d3.min.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+    </body>
+</html>
