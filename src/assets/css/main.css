@@ -32,3 +32,13 @@
 th {
     cursor: pointer;
 }
+
+th i {
+    float: right;    
+    line-height: inherit !important;
+}
+
+.i-hide {
+    display: none !important;
+}
+

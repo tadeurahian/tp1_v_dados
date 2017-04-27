@@ -25,6 +25,9 @@
         $('.previous').on('click', VoltarPagina);
         $('.btn-filter').on('click', Filtrar);
         $('.btn-clean-filter').on('click', LimparFiltro);
+        $('th').on('click', function() {
+            Ordenar(this);
+        });
     });
 
     function PreencherTabelaComDadosIniciais() {
@@ -110,6 +113,9 @@
         var termo = $InputFiltro.val();
 
         $TableBody.empty();
+
+        $('.fa').addClass('i-hide');
+
         DataSetApresentado = [];
         UltimaPagina = false;
 
@@ -126,6 +132,7 @@
         $TableBody.empty();
         DataSetApresentado = [];
         UltimaPagina = false;
+        $('.fa').addClass('i-hide');
 
         $InputFiltro.val('');
 
@@ -188,6 +195,55 @@
             return true;
 
         return false;
+    }
+
+    function Ordenar(th) {
+        var propriedade = $(th).data('column');
+        var crescente = $(th).data('order');
+
+        if(crescente == null)
+            crescente = true;                    
+
+        if(crescente === true) {
+            DataSetApresentado.sort(function (a, b) {
+                if(a[propriedade] > b[propriedade])
+                    return 1;
+                else if (a[propriedade] < b[propriedade])
+                    return -1;
+                else
+                    return 0;
+            });
+        }  else {
+           DataSetApresentado.sort(function (a, b) {
+                if(a[propriedade] > b[propriedade])
+                    return -1;
+                else if (a[propriedade] < b[propriedade])
+                    return 1;
+                else
+                    return 0;
+            }); 
+        }      
+
+        ExibirIconeOrdenacao(th, crescente);
+
+        $(th).data('order', !crescente);
+
+        $TableBody.empty();
+        UltimaPagina = false;
+
+        PreencherTabelaComDadosIniciais();
+    }    
+
+    function ExibirIconeOrdenacao(th, crescente) {
+        $('.fa').addClass('i-hide');
+
+        if(crescente === true) {
+            $(th).children('.fa-arrow-up').removeClass('i-hide');
+            $(th).children('.fa-arrow-down').addClass('i-hide');
+        } else {
+            $(th).children('.fa-arrow-up').addClass('i-hide');
+            $(th).children('.fa-arrow-down').removeClass('i-hide');
+        }
     }
 })();
 
